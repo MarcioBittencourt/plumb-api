@@ -1,0 +1,8 @@
+{
+    "typeorm": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "usarname": "docker",
+    "password": "docker",
+    "database": "plumb"
+}
