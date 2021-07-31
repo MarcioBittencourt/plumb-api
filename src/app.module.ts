@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { DatabaseModule } from './database/database.module';
 import { AssessementsModule } from './assessements/assessements.module';
+import { EmployerModule } from './employer/employer.module';
 import { AssessementsModule } from './assessements/assessements.module';
 
 @Module({
