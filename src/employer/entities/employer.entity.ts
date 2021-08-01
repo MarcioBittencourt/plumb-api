@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Assessement } from 'src/assessements/entities/assessement.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('employer')
 export class Employer {
@@ -10,6 +11,12 @@ export class Employer {
 
   @Column({ type: 'varchar' })
   role: string;
+
+  @OneToMany((type) => Assessement, (evaluation) => evaluation.evaluator)
+  evaluations: Assessement[];
+
+  @OneToMany((type) => Assessement, (rating) => rating.rated)
+  ratings: Assessement[];
 
   @Column({ name: 'company_id', type: 'int' })
   companyId: number;

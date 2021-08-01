@@ -1,11 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateEmployerDto } from './dto/create-employer.dto';
 import { UpdateEmployerDto } from './dto/update-employer.dto';
+import { EmployerRepository } from './employer.repository';
 
 @Injectable()
 export class EmployerService {
+  constructor(
+    @InjectRepository(EmployerRepository)
+    private readonly repository: EmployerRepository,
+  ) {}
   create(createEmployerDto: CreateEmployerDto) {
-    return 'This action adds a new employer';
+    const employer = this.repository.save(createEmployerDto);
+    return employer;
   }
 
   findAll() {
