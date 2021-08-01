@@ -1,15 +1,30 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Employer } from 'src/employer/entities/employer.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('assessement')
 export class Assessement {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ name: 'evaluator_id', type: 'int' })
-  evaluatorId: number;
+  @ManyToOne((type) => Employer, (evaluator) => evaluator.evaluations)
+  @JoinColumn({
+    name: 'evaluator_id',
+    referencedColumnName: 'id',
+  })
+  evaluator: Employer;
 
-  @Column({ name: 'rated_id', type: 'int' })
-  ratedId: number;
+  @ManyToOne((type) => Employer, (rated) => rated.ratings)
+  @JoinColumn({
+    name: 'rated_id',
+    referencedColumnName: 'id',
+  })
+  rated: Employer;
 
   @Column({ type: 'varchar' })
   description: string;
