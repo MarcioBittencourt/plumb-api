@@ -18,6 +18,6 @@ export class Employer {
   @OneToMany((type) => Assessement, (rating) => rating.rated)
   ratings: Assessement[];
 
-  @Column({ name: 'company_id', type: 'int' })
+  @Column({ name: 'company_id', type: 'int', nullable: true })
   companyId: number;
 }

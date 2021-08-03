@@ -3,9 +3,10 @@ import { EmployerService } from './employer.service';
 import { EmployerController } from './employer.controller';
 import { EmployerRepository } from './employer.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 @Module({
-  controllers: [EmployerController],
-  providers: [EmployerService, EmployerRepository],
   imports: [TypeOrmModule.forFeature([EmployerRepository])],
+  controllers: [EmployerController],
+  providers: [EmployerService],
 })
 export class EmployerModule {}
