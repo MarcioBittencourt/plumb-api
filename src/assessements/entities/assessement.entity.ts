@@ -17,14 +17,14 @@ export class Assessement {
     name: 'evaluator_id',
     referencedColumnName: 'id',
   })
-  evaluator: Employer;
+  evaluator: Employer | number;
 
   @ManyToOne((type) => Employer, (rated) => rated.ratings)
   @JoinColumn({
     name: 'rated_id',
     referencedColumnName: 'id',
   })
-  rated: Employer;
+  rated: Employer | number;
 
   @Column({ type: 'varchar' })
   description: string;

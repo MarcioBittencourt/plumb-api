@@ -7,27 +7,27 @@ import { UpdateAssessementDto } from './dto/update-assessement.dto';
 export class AssessementsService {
   constructor(private readonly repository: AssessementRepository) {}
 
-  create(createAssessementDto: CreateAssessementDto) {
-    const assessement = this.repository.save(createAssessementDto);
+  async create(createAssessementDto: CreateAssessementDto) {
+    const assessement = await this.repository.save({ ...createAssessementDto });
     return assessement;
   }
 
-  findAll() {
-    return this.repository.find();
+  async findAll() {
+    return await this.repository.find();
   }
 
-  findOne(id: number) {
-    const assessement = this.repository.findOne(id);
+  async findOne(id: number) {
+    const assessement = await this.repository.findOne(id);
     return assessement;
   }
 
-  update(id: number, updateAssessementDto: UpdateAssessementDto) {
-    this.repository.update(id, updateAssessementDto);
+  async update(id: number, updateAssessementDto: UpdateAssessementDto) {
+    await this.repository.update(id, updateAssessementDto);
     return `This action updates a #${id} assessement`;
   }
 
-  remove(id: number) {
-    this.repository.delete(id);
+  async remove(id: number) {
+    await this.repository.delete(id);
     return `This action removes a #${id} assessement`;
   }
 }
