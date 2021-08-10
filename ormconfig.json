@@ -7,9 +7,9 @@
     "database": "plumb",
     "entities": ["dist/**/*.entity{.ts,.js}"],
     "migrations": [
-        "dist/**/database/migrations/*.ts"
+        "dist/database/migrations/*.ts"
     ],
     "cli": {
-        "migrationsDir": "dist/**/database/migrations"
+        "migrationsDir": "src/database/migrations"
     }
 }
