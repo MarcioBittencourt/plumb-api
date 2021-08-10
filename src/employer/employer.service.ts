@@ -7,28 +7,28 @@ import { EmployerRepository } from './employer.repository';
 export class EmployerService {
   constructor(private readonly repository: EmployerRepository) {}
 
-  create(createEmployerDto: CreateEmployerDto) {
-    const employer = this.repository.save(createEmployerDto);
+  async create(createEmployerDto: CreateEmployerDto) {
+    const employer = await this.repository.save(createEmployerDto);
     return employer;
   }
 
-  findAll() {
-    const employers = this.repository.find();
+  async findAll() {
+    const employers = await this.repository.find();
     return employers;
   }
 
-  findOne(id: number) {
-    const employer = this.repository.findOne(id);
+  async findOne(id: number) {
+    const employer = await this.repository.findOne(id);
     return employer;
   }
 
-  update(id: number, updateEmployerDto: UpdateEmployerDto) {
-    const employer = this.repository.update({ id }, updateEmployerDto);
-    return employer;
+  async update(id: number, updateEmployerDto: UpdateEmployerDto) {
+    await this.repository.update({ id }, updateEmployerDto);
+    return `This action updates a #${id} assessement`;
   }
 
-  remove(id: number) {
-    this.repository.delete(id);
+  async remove(id: number) {
+    await this.repository.delete(id);
     return `This action removes a #${id} employer`;
   }
 }

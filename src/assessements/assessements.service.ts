@@ -13,7 +13,8 @@ export class AssessementsService {
   }
 
   async findAll() {
-    return await this.repository.find();
+    const assessements = await this.repository.find();
+    return assessements;
   }
 
   async findOne(id: number) {

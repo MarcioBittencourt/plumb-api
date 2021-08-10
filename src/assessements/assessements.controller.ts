@@ -20,7 +20,10 @@ export class AssessementsController {
   async create(
     @Body() createAssessementDto: CreateAssessementDto,
   ): Promise<Assessement> {
-    return await this.assessementsService.create(createAssessementDto);
+    const assessement = await this.assessementsService.create(
+      createAssessementDto,
+    );
+    return assessement;
   }
 
   @Get()
