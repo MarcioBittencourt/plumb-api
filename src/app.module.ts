@@ -11,13 +11,13 @@ import { AssessementsModule } from './assessements/assessements.module';
   imports: [
     EmployerModule,
     AssessementsModule,
+    QuestionsModule,
     TypeOrmModule.forRootAsync({
       useFactory: async () =>
         Object.assign(await getConnectionOptions(), {
           autoLoadEntities: true,
         }),
     }),
-    QuestionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
