@@ -4,5 +4,5 @@ import { CreateAssessementDto } from './create-assessement.dto';
 
 export class UpdateAssessementDto extends PartialType(CreateAssessementDto) {
   @IsNotEmpty()
-  id: string;
+  id: number;
 }
