@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { EmployerModule } from './employer/employer.module';
+import { EmployeesModule } from './employees/employees.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { QuestionsModule } from './questions/questions.module';
@@ -9,7 +9,7 @@ import { AssessementsModule } from './assessements/assessements.module';
 
 @Module({
   imports: [
-    EmployerModule,
+    EmployeesModule,
     AssessementsModule,
     QuestionsModule,
     TypeOrmModule.forRootAsync({

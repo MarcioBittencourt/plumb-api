@@ -1,10 +1,20 @@
 import { Assessement } from 'src/assessements/entities/assessement.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Generated,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
-@Entity('employer')
-export class Employer {
-  @PrimaryGeneratedColumn()
+@Entity('employee')
+export class Employee {
+  @PrimaryGeneratedColumn('increment')
   id: number;
+
+  @Column({ name: 'uuid', type: 'uuid' })
+  @Generated('uuid')
+  uuid: string;
 
   @Column({ type: 'varchar' })
   name: string;
