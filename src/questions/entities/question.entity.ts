@@ -27,10 +27,10 @@ export class Question {
   @Column({ name: 'category', type: 'varchar' })
   category: string;
 
-  @Column({ name: 'content', type: 'varchar' })
+  @Column({ name: 'ask', type: 'varchar' })
   ask: string;
 
-  @Column({ name: 'content', type: 'varchar' })
+  @Column({ name: 'answer', type: 'varchar' })
   answer: string;
 
   @Column({ name: 'type_question', type: 'varchar' })
