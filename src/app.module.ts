@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { QuestionsModule } from './questions/questions.module';
 import { AssessementsModule } from './assessements/assessements.module';
+import { CompaniesModule } from './companies/companies.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AssessementsModule } from './assessements/assessements.module';
           autoLoadEntities: true,
         }),
     }),
+    CompaniesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
