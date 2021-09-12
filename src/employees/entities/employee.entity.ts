@@ -20,7 +20,13 @@ export class Employee {
   name: string;
 
   @Column({ type: 'varchar' })
+  email: string;
+
+  @Column({ type: 'varchar' })
   role: string;
+
+  @Column({ type: 'varchar' })
+  password: string;
 
   @OneToMany((type) => Assessement, (evaluation) => evaluation.evaluator)
   evaluations: Assessement[];
