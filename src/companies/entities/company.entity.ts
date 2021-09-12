@@ -9,8 +9,14 @@ export class Company {
   @Generated('uuid')
   uuid: string;
 
-  @Column({ name: 'name', type: 'varchar' })
-  name: string;
+  @Column({ name: 'company_name', type: 'varchar' })
+  companyName: string;
+
+  @Column({ name: 'business_name', type: 'varchar' })
+  businessName: string;
+
+  @Column({ name: 'business_register', type: 'varchar' })
+  businessRegister: string;
 
   @Column({ name: 'country', type: 'varchar' })
   country: string;

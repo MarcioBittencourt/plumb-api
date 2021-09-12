@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { EmployeesRepository } from 'src/employees/employees.repository';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { CompaniesRepository } from './companies.repository';
 import { CreateCompanyDto } from './dto/create-company.dto';
@@ -7,10 +8,17 @@ import { Company } from './entities/company.entity';
 
 @Injectable()
 export class CompaniesService {
-  constructor(private readonly repository: CompaniesRepository) {}
+  constructor(
+    private readonly repository: CompaniesRepository,
+    private readonly employeesRepository: EmployeesRepository,
+  ) {}
 
   async create(createCompanyDto: CreateCompanyDto): Promise<Company> {
-    const company = this.repository.save(createCompanyDto);
+    const company = await this.repository.save(createCompanyDto);
+    const employees = await this.employeesRepository.save(
+      createCompanyDto.employees,
+    );
+    console.log(employees);
     return company;
   }
 
