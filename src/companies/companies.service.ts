@@ -15,10 +15,12 @@ export class CompaniesService {
 
   async create(createCompanyDto: CreateCompanyDto): Promise<Company> {
     const company = await this.repository.save(createCompanyDto);
+    createCompanyDto.employees.map((employee) => {
+      employee.companyId = company.id;
+    });
     const employees = await this.employeesRepository.save(
       createCompanyDto.employees,
     );
-    console.log(employees);
     return company;
   }
 

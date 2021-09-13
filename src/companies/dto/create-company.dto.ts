@@ -3,7 +3,7 @@ import { Employee } from 'src/employees/entities/employee.entity';
 
 export class CreateCompanyDto {
   @IsNotEmpty()
-  name: string;
+  companyName: string;
 
   @IsNotEmpty()
   country: string;
