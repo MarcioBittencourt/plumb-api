@@ -17,6 +17,9 @@ export class Employee {
   uuid: string;
 
   @Column({ type: 'varchar' })
+  photo: string;
+
+  @Column({ type: 'varchar' })
   name: string;
 
   @Column({ type: 'varchar' })

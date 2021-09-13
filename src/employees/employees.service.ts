@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { EmployeesRepository } from './employees.repository';
+import { Employee } from './entities/employee.entity';
 
 @Injectable()
 export class EmployeesService {
@@ -15,6 +16,12 @@ export class EmployeesService {
   async findAll() {
     const employees = await this.repository.find();
     return employees;
+  }
+
+  async findByCompany(company_id: number): Promise<Employee[]> {
+    return await this.repository.find({
+      where: { companyId: company_id },
+    });
   }
 
   async findOne(id: number) {

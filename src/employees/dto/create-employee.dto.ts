@@ -1,6 +1,10 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateEmployeeDto {
+  @IsString()
+  @IsOptional()
+  photo: string;
+
   @IsString()
   @IsNotEmpty()
   name: string;

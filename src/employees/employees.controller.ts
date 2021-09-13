@@ -36,6 +36,12 @@ export class EmployeesController {
     return employee;
   }
 
+  @Get('company/:companyId')
+  async findByCompany(@Param('companyId') id: string): Promise<Employee[]> {
+    const employees = await this.employeesService.findByCompany(+id);
+    return employees;
+  }
+
   @Patch(':id')
   async update(
     @Param('id') id: string,
