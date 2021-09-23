@@ -33,12 +33,24 @@ export class Assessement {
   })
   rated: Employee | number;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: true })
   description: string;
+
+  @Column({ type: 'varchar', name: 'request_date' })
+  requestDate: string;
+
+  @Column({ type: 'varchar', name: 'deadline_date', nullable: true })
+  deadlineDate: string;
+
+  @Column({ type: 'varchar', name: 'concluded_date', nullable: true })
+  concludedDate: string;
+
+  @Column({ type: 'varchar', name: 'status' })
+  status: string;
 
   @OneToMany((type) => Question, (question) => question.assessement)
   questions: Question[];
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', nullable: true })
   punctuation: number;
 }

@@ -32,6 +32,20 @@ export class AssessementsController {
     return assessements;
   }
 
+  @Get('byEvaluator/:evaluatorId')
+  async findByAssessement(
+    @Param('evaluatorId') id: string,
+  ): Promise<Assessement[]> {
+    const assessements = await this.assessementsService.findByAssessement(+id);
+    return assessements;
+  }
+
+  @Get('byRated/:ratedId')
+  async findByRated(@Param('ratedId') id: string): Promise<Assessement[]> {
+    const assessements = await this.assessementsService.findByRated(+id);
+    return assessements;
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Assessement> {
     const assessement = await this.assessementsService.findOne(+id);

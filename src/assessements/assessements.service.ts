@@ -17,6 +17,20 @@ export class AssessementsService {
     return assessements;
   }
 
+  async findByAssessement(evaluatorId: number) {
+    return await this.repository.find({
+      where: { evaluator: evaluatorId },
+      relations: ['rated', 'evaluator'],
+    });
+  }
+
+  async findByRated(ratedId: number) {
+    return await this.repository.find({
+      where: { rated: ratedId },
+      relations: ['rated', 'evaluator'],
+    });
+  }
+
   async findOne(id: number) {
     const assessement = await this.repository.findOne(id);
     return assessement;
