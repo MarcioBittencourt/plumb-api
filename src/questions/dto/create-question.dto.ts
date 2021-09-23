@@ -1,15 +1,19 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateQuestionDto {
+  @IsNumber()
+  @IsNotEmpty()
+  assessement: number;
+
   @IsString()
   @IsNotEmpty()
   category: string;
 
   @IsString()
-  @IsNotEmpty()
-  content: string;
+  @IsOptional()
+  ask: string;
 
   @IsString()
-  @IsNotEmpty()
-  typeQuestion: string;
+  @IsOptional()
+  answer: string;
 }

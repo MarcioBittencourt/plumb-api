@@ -36,6 +36,12 @@ export class QuestionsController {
     return question;
   }
 
+  @Get('byAssessement/:id')
+  async findAssessement(@Param('id') id: string): Promise<Question[]> {
+    const questions = await this.questionsService.findAssessement(+id);
+    return questions;
+  }
+
   @Patch(':id')
   async update(
     @Param('id') id: string,

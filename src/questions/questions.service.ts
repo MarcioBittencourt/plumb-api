@@ -21,6 +21,12 @@ export class QuestionsService {
     return question;
   }
 
+  async findAssessement(assessementId: number) {
+    return await this.repository.find({
+      where: { assessement: assessementId },
+    });
+  }
+
   async update(id: number, updateQuestionDto: UpdateQuestionDto) {
     await this.repository.update(id, updateQuestionDto);
     return `This action updates a #${id} question`;

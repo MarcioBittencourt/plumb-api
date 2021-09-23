@@ -4,5 +4,5 @@ import { CreateQuestionDto } from './create-question.dto';
 
 export class UpdateQuestionDto extends PartialType(CreateQuestionDto) {
   @IsNotEmpty()
-  id: number;
+  answer: string;
 }

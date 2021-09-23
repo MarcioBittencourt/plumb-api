@@ -1,3 +1,4 @@
+import { IsOptional } from 'class-validator';
 import { Assessement } from 'src/assessements/entities/assessement.entity';
 import {
   Column,
@@ -17,12 +18,15 @@ export class Question {
   @Generated('uuid')
   uuid: string;
 
+  @Column({ name: 'question_id', type: 'varchar', nullable: true })
+  questionId: string;
+
   @ManyToOne((type) => Assessement, (assessement) => assessement.questions)
   @JoinColumn({
     name: 'assessement_id',
     referencedColumnName: 'id',
   })
-  assessement: Assessement;
+  assessement: Assessement | number;
 
   @Column({ name: 'category', type: 'varchar' })
   category: string;
@@ -30,9 +34,6 @@ export class Question {
   @Column({ name: 'ask', type: 'varchar' })
   ask: string;
 
-  @Column({ name: 'answer', type: 'varchar' })
+  @Column({ name: 'answer', type: 'varchar', nullable: true })
   answer: string;
-
-  @Column({ name: 'type_question', type: 'varchar' })
-  typeQuestion: string;
 }
