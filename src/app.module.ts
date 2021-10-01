@@ -7,6 +7,8 @@ import { getConnectionOptions } from 'typeorm';
 import { QuestionsModule } from './questions/questions.module';
 import { AssessementsModule } from './assessements/assessements.module';
 import { CompaniesModule } from './companies/companies.module';
+import { GoalsModule } from './goals/goals.module';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { CompaniesModule } from './companies/companies.module';
         }),
     }),
     CompaniesModule,
+    GoalsModule,
+    TasksModule,
   ],
   controllers: [AppController],
   providers: [AppService],
