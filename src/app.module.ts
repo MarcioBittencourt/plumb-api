@@ -9,6 +9,7 @@ import { AssessementsModule } from './assessements/assessements.module';
 import { CompaniesModule } from './companies/companies.module';
 import { GoalsModule } from './goals/goals.module';
 import { TasksModule } from './tasks/tasks.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { TasksModule } from './tasks/tasks.module';
     CompaniesModule,
     GoalsModule,
     TasksModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

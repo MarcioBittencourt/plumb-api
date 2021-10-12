@@ -5,6 +5,7 @@
     "username": "postgres",
     "password": "docker",
     "database": "plumb",
+    "logging": ["query", "error"],
     "entities": ["dist/**/*.entity{.ts,.js}"],
     "migrations": [
         "dist/database/migrations/*.ts"
