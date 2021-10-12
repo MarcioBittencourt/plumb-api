@@ -26,6 +26,21 @@ export class GoalsService {
     return goal;
   }
 
+  async findByEmployeeId(id: number) {
+    return await this.repository
+      .createQueryBuilder('goal')
+      .leftJoinAndSelect('goal.employees', 'employee')
+      .leftJoinAndSelect('goal.tasks', 'task')
+      .innerJoin(
+        'goal.employees',
+        'employee_juntion',
+        'employee_juntion.id = :id',
+        { id },
+      )
+      //.where('employee.id = :id', { id })
+      .getMany();
+  }
+
   async update(id: number, updateGoalDto: UpdateGoalDto) {
     await this.repository.update({ id }, updateGoalDto);
     return `This action updates a #${id} goal`;

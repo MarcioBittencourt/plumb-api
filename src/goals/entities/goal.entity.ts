@@ -8,7 +8,6 @@ import {
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
-  RelationId,
 } from 'typeorm';
 
 @Entity('goal')
@@ -35,7 +34,7 @@ export class Goal {
   @Column({ name: 'end_date', type: 'varchar' })
   endDate: string;
 
-  @Column({ name: 'sector', type: 'varchar' })
+  @Column({ name: 'sector', type: 'varchar', nullable: true })
   sector: string;
 
   @ManyToMany((type) => Employee)
@@ -45,4 +44,19 @@ export class Goal {
   @OneToMany((type) => Task, (tasks) => tasks.goal)
   @JoinTable()
   tasks: Task[];
+
+  @Column({ name: 'specific', type: 'varchar', nullable: true })
+  specific: string;
+
+  @Column({ name: 'measurable', type: 'varchar', nullable: true })
+  measurable: string;
+
+  @Column({ name: 'attainable', type: 'varchar', nullable: true })
+  attainable: string;
+
+  @Column({ name: 'relevant', type: 'varchar', nullable: true })
+  relevant: string;
+
+  @Column({ name: 'time_bound', type: 'varchar', nullable: true })
+  timeBound: string;
 }

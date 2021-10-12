@@ -34,6 +34,12 @@ export class GoalsController {
     return goal;
   }
 
+  @Get('employee/:employeeId')
+  async findByEmployeeId(@Param('employeeId') id: string) {
+    const goal = await this.goalsService.findByEmployeeId(+id);
+    return goal;
+  }
+
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateGoalDto: UpdateGoalDto) {
     const goal = await this.goalsService.update(+id, updateGoalDto);
