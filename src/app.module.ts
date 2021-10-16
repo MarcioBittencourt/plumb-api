@@ -10,6 +10,8 @@ import { CompaniesModule } from './companies/companies.module';
 import { GoalsModule } from './goals/goals.module';
 import { TasksModule } from './tasks/tasks.module';
 import { AuthModule } from './auth/auth.module';
+import { DiscModule } from './disc/disc.module';
+import { SurveyDiscModule } from './survey-disc/survey-disc.module';
 
 @Module({
   imports: [
@@ -26,6 +28,8 @@ import { AuthModule } from './auth/auth.module';
     GoalsModule,
     TasksModule,
     AuthModule,
+    DiscModule,
+    SurveyDiscModule,
   ],
   controllers: [AppController],
   providers: [AppService],

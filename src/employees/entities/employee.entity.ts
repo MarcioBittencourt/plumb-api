@@ -1,4 +1,5 @@
 import { Assessement } from 'src/assessements/entities/assessement.entity';
+import { Disc } from 'src/disc/entities/disc.entity';
 import {
   Column,
   Entity,
@@ -36,6 +37,9 @@ export class Employee {
 
   @OneToMany((type) => Assessement, (rating) => rating.rated)
   ratings: Assessement[];
+
+  @OneToMany((type) => Disc, (disc) => disc.employee)
+  disc: Disc[];
 
   @Column({ name: 'company_id', type: 'int', nullable: true })
   companyId: number;
