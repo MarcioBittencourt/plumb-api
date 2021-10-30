@@ -20,7 +20,7 @@ export class EmployeesService {
 
   async findByCompany(company_id: number): Promise<Employee[]> {
     return await this.repository.find({
-      where: { companyId: company_id },
+      where: { company: company_id },
     });
   }
 

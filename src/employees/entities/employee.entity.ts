@@ -1,9 +1,12 @@
 import { Assessement } from 'src/assessements/entities/assessement.entity';
+import { Company } from 'src/companies/entities/company.entity';
 import { Disc } from 'src/disc/entities/disc.entity';
 import {
   Column,
   Entity,
   Generated,
+  JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -17,7 +20,7 @@ export class Employee {
   @Generated('uuid')
   uuid: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: true })
   photo: string;
 
   @Column({ type: 'varchar' })
@@ -41,6 +44,11 @@ export class Employee {
   @OneToMany((type) => Disc, (disc) => disc.employee)
   disc: Disc[];
 
+  @ManyToOne((type) => Company, (company) => company.employees)
+  @JoinColumn({
+    name: 'company_id',
+    referencedColumnName: 'id',
+  })
   @Column({ name: 'company_id', type: 'int', nullable: true })
-  companyId: number;
+  company: Company | number;
 }
