@@ -19,7 +19,14 @@ export class AssessementsService {
 
   async findByAssessement(evaluatorId: number) {
     return await this.repository.find({
-      where: { evaluator: evaluatorId },
+      where: [
+        {
+          evaluator: evaluatorId,
+        },
+        {
+          rated: evaluatorId,
+        },
+      ],
       relations: ['rated', 'evaluator'],
     });
   }
