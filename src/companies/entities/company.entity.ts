@@ -1,4 +1,12 @@
-import { Column, Entity, Generated, PrimaryGeneratedColumn } from 'typeorm';
+import { Employee } from 'src/employees/entities/employee.entity';
+import {
+  Column,
+  Entity,
+  Generated,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('company')
 export class Company {
@@ -18,6 +26,25 @@ export class Company {
   @Column({ name: 'business_register', type: 'varchar' })
   businessRegister: string;
 
+  @Column({
+    name: 'recover_email',
+    type: 'varchar',
+  })
+  recoverEmail: string;
+
+  @Column({
+    name: 'password',
+    type: 'varchar',
+  })
+  password: string;
+
   @Column({ name: 'country', type: 'varchar' })
   country: string;
+
+  @OneToMany((type) => Employee, (employee) => employee.company)
+  @JoinColumn({
+    name: 'employee_id',
+    referencedColumnName: 'id',
+  })
+  employees: Employee[];
 }

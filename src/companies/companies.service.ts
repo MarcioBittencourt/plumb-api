@@ -16,7 +16,7 @@ export class CompaniesService {
   async create(createCompanyDto: CreateCompanyDto): Promise<Company> {
     const company = await this.repository.save(createCompanyDto);
     createCompanyDto.employees.map((employee) => {
-      employee.companyId = company.id;
+      employee.company = company.id;
     });
     const employees = await this.employeesRepository.save(
       createCompanyDto.employees,
@@ -30,7 +30,10 @@ export class CompaniesService {
   }
 
   async findOne(id: number): Promise<Company> {
-    const company = await this.repository.findOne(id);
+    const company = await this.repository.findOne({
+      where: { id: id },
+      relations: ['employees'],
+    });
     return company;
   }
 
