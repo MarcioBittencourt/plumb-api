@@ -1,17 +1,19 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class goalNullableSector1633138569589 implements MigrationInterface {
-  name = 'goalNullableSector1633138569589';
+export class employeeEditColumnPhoto1635196867600
+  implements MigrationInterface
+{
+  name = 'employeeEditColumnPhoto1635196867600';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `ALTER TABLE "goal" ALTER COLUMN "sector" DROP NOT NULL`,
+      `ALTER TABLE "employee" ALTER COLUMN "photo" DROP NOT NULL`,
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `ALTER TABLE "goal" ALTER COLUMN "sector" SET NOT NULL`,
+      `ALTER TABLE "employee" ALTER COLUMN "photo" SET NOT NULL`,
     );
   }
 }
