@@ -18,7 +18,7 @@ export class Question {
   @Generated('uuid')
   uuid: string;
 
-  @Column({ name: 'question_id', type: 'varchar', nullable: true })
+  @Column({ name: 'question_id', type: 'varchar' })
   questionId: string;
 
   @ManyToOne((type) => Assessement, (assessement) => assessement.questions)
