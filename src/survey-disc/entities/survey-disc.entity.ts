@@ -17,8 +17,8 @@ export class SurveyDisc {
   @Generated('uuid')
   uuid: string;
 
-  @Column({ name: 'asking', type: 'varchar' })
-  asking: string;
+  @Column('text', { array: true, name: 'asking' })
+  asking: string[];
 
   @Column({ name: 'more', type: 'varchar' })
   more: string;
@@ -31,5 +31,5 @@ export class SurveyDisc {
     name: 'disc_id',
     referencedColumnName: 'id',
   })
-  disc: Disc;
+  disc: Disc | number;
 }
