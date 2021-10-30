@@ -36,14 +36,14 @@ export class Assessement {
   @Column({ type: 'varchar', nullable: true })
   description: string;
 
-  @Column({ type: 'varchar', name: 'request_date' })
+  @Column({ type: 'timestamp', name: 'request_date' })
   requestDate: string;
 
-  @Column({ type: 'varchar', name: 'deadline_date', nullable: true })
-  deadlineDate: string;
+  @Column({ type: 'timestamp', name: 'deadline_date', nullable: true })
+  deadlineDate: Date;
 
   @Column({ type: 'varchar', name: 'concluded_date', nullable: true })
-  concludedDate: string;
+  concludedDate: Date;
 
   @Column({ type: 'varchar', name: 'status' })
   status: string;
