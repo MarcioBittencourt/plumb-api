@@ -28,11 +28,11 @@ export class Goal {
   @Column({ name: 'goal_measured_detail', type: 'varchar' })
   goalMeasuredDetail: string;
 
-  @Column({ name: 'start_date', type: 'varchar' })
-  startDate: string;
+  @Column({ name: 'start_date', type: 'timestamp' })
+  startDate: Date;
 
-  @Column({ name: 'end_date', type: 'varchar' })
-  endDate: string;
+  @Column({ name: 'end_date', type: 'timestamp' })
+  endDate: Date;
 
   @Column({ name: 'sector', type: 'varchar', nullable: true })
   sector: string;
