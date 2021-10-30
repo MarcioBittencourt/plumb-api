@@ -6,10 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { DiscService } from './disc.service';
 import { CreateDiscDto } from './dto/create-disc.dto';
 import { UpdateDiscDto } from './dto/update-disc.dto';
+import { Disc } from './entities/disc.entity';
 
 @Controller('disc')
 export class DiscController {
@@ -23,6 +25,22 @@ export class DiscController {
   @Get()
   async findAll() {
     return await this.discService.findAll();
+  }
+
+  @Get('employeeId/:employeeId')
+  async findByEmployeeId(@Param('employeeId') id: string): Promise<Disc[]> {
+    return await this.discService.findByEmployeeId(+id);
+  }
+
+  @Get('companyId/:companyId')
+  async findByCompanyId(
+    @Param('companyId') id: string,
+    @Query('onlyRecent') onlyRecent?: string,
+  ): Promise<Disc[]> {
+    return await this.discService.findByCompanyId(
+      +id,
+      onlyRecent === 'true' ? true : false,
+    );
   }
 
   @Get(':id')

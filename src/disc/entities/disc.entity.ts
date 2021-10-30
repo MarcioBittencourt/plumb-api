@@ -25,6 +25,13 @@ export class Disc {
   @OneToMany((type) => SurveyDisc, (survey) => survey.disc)
   survey: SurveyDisc[];
 
+  @Column({
+    type: 'timestamp',
+    name: 'creation_date',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  creationDate: Date;
+
   @ManyToOne((type) => Employee, (employee) => employee.disc)
   @JoinColumn({
     name: 'employee_id',
