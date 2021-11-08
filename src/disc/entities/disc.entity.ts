@@ -1,3 +1,4 @@
+import { Cycle } from 'src/cycles/entities/cycle.entity';
 import { Employee } from 'src/employees/entities/employee.entity';
 import { SurveyDisc } from 'src/survey-disc/entities/survey-disc.entity';
 import {
@@ -38,4 +39,11 @@ export class Disc {
     referencedColumnName: 'id',
   })
   employee: Employee | number;
+
+  @ManyToOne((type) => Cycle)
+  @JoinColumn({
+    name: 'cycle_id',
+    referencedColumnName: 'id',
+  })
+  cycle: Cycle | number;
 }
