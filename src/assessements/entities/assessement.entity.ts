@@ -1,3 +1,4 @@
+import { Cycle } from 'src/cycles/entities/cycle.entity';
 import { Employee } from 'src/employees/entities/employee.entity';
 import { Question } from 'src/questions/entities/question.entity';
 import {
@@ -32,6 +33,13 @@ export class Assessement {
     referencedColumnName: 'id',
   })
   rated: Employee | number;
+
+  @ManyToOne((type) => Cycle)
+  @JoinColumn({
+    name: 'cycle_id',
+    referencedColumnName: 'id',
+  })
+  cycle: Cycle | number;
 
   @Column({ type: 'varchar', nullable: true })
   description: string;

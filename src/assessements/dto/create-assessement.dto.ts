@@ -1,4 +1,11 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsDate,
+  IsDateString,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { Question } from 'src/questions/entities/question.entity';
 
 export class CreateAssessementDto {
@@ -14,15 +21,15 @@ export class CreateAssessementDto {
   @IsOptional()
   description: string;
 
-  @IsString()
+  @IsDateString()
   @IsNotEmpty()
   requestDate: string;
 
-  @IsString()
+  @IsDateString()
   @IsOptional()
   deadlineDate: string;
 
-  @IsString()
+  @IsDateString()
   @IsOptional()
   concludedDate: string;
 
