@@ -1,6 +1,9 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateEmployeeDto {
+  @IsOptional()
+  id: number;
+
   @IsString()
   @IsOptional()
   photo: string;
