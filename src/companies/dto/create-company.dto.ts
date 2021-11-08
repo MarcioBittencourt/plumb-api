@@ -1,7 +1,12 @@
 import { IsNotEmpty, IsOptional } from 'class-validator';
+import { CreateCycleDto } from 'src/cycles/dto/create-cycle.dto';
+import { Cycle } from 'src/cycles/entities/cycle.entity';
 import { Employee } from 'src/employees/entities/employee.entity';
 
 export class CreateCompanyDto {
+  @IsOptional()
+  id: number;
+
   @IsNotEmpty()
   companyName: string;
 
@@ -21,14 +26,8 @@ export class CreateCompanyDto {
   businessRegister: string;
 
   @IsOptional()
-  employees?: [Employee];
+  employees?: Employee[];
 
-  /*sprints ------ 
-      feature: appo | disc | a360
-      cadency: refAppoCadency.current?.value,
-      period: { startDay: 1, endDay: 1 }
-      lógica ------
-        1 Mes, 1-5 do Mes, Até 2022
-        total 24 registros
-  */
+  @IsOptional()
+  cycles?: CreateCycleDto[];
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CyclesService } from 'src/cycles/cycles.service';
 import { EmployeesRepository } from 'src/employees/employees.repository';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { CompaniesRepository } from './companies.repository';
@@ -11,16 +12,24 @@ export class CompaniesService {
   constructor(
     private readonly repository: CompaniesRepository,
     private readonly employeesRepository: EmployeesRepository,
+    private readonly cyclesService: CyclesService,
   ) {}
 
   async create(createCompanyDto: CreateCompanyDto): Promise<Company> {
     const company = await this.repository.save(createCompanyDto);
-    createCompanyDto.employees.map((employee) => {
-      employee.company = company.id;
-    });
+
     const employees = await this.employeesRepository.save(
-      createCompanyDto.employees,
+      createCompanyDto.employees.map((employee) => {
+        return { ...employee, company: company.id };
+      }),
     );
+
+    if (createCompanyDto.cycles) {
+      createCompanyDto.cycles.map((cycle) => {
+        this.cyclesService.create({ ...cycle, company: company.id });
+      });
+    }
+
     return company;
   }
 
@@ -31,8 +40,12 @@ export class CompaniesService {
 
   async findOne(id: number): Promise<Company> {
     const company = await this.repository.findOne({
-      where: { id: id },
-      relations: ['employees'],
+      where: [
+        {
+          id: id,
+        },
+      ],
+      relations: ['employees', 'cycle'],
     });
     return company;
   }

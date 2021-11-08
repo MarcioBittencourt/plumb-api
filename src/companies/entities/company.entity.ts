@@ -1,3 +1,4 @@
+import { Cycle } from 'src/cycles/entities/cycle.entity';
 import { Employee } from 'src/employees/entities/employee.entity';
 import {
   Column,
@@ -47,4 +48,11 @@ export class Company {
     referencedColumnName: 'id',
   })
   employees: Employee[];
+
+  @OneToMany((type) => Cycle, (cycle) => cycle.company)
+  @JoinColumn({
+    name: 'cycle_id',
+    referencedColumnName: 'id',
+  })
+  cycle: Cycle[];
 }
