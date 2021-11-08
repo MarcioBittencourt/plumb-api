@@ -12,6 +12,7 @@ import { TasksModule } from './tasks/tasks.module';
 import { AuthModule } from './auth/auth.module';
 import { DiscModule } from './disc/disc.module';
 import { SurveyDiscModule } from './survey-disc/survey-disc.module';
+import { CyclesModule } from './cycles/cycles.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { SurveyDiscModule } from './survey-disc/survey-disc.module';
     AuthModule,
     DiscModule,
     SurveyDiscModule,
+    CyclesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
