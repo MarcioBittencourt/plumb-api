@@ -1,11 +1,14 @@
+import { Cycle } from 'src/cycles/entities/cycle.entity';
 import { Employee } from 'src/employees/entities/employee.entity';
 import { Task } from 'src/tasks/entities/task.entity';
 import {
   Column,
   Entity,
   Generated,
+  JoinColumn,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -24,6 +27,13 @@ export class Goal {
 
   @Column({ name: 'goal_detail', type: 'varchar' })
   goalDetail: string;
+
+  @ManyToOne((type) => Cycle)
+  @JoinColumn({
+    name: 'cycle_id',
+    referencedColumnName: 'id',
+  })
+  cycle: Cycle | number;
 
   @Column({ name: 'goal_measured_detail', type: 'varchar' })
   goalMeasuredDetail: string;
