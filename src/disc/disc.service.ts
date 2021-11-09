@@ -19,6 +19,7 @@ export class DiscService {
   async findByEmployeeId(employeeId: number) {
     return await this.repository.find({
       where: { employee: employeeId },
+      relations: ['cycle'],
       order: { creationDate: 'DESC' },
     });
   }
